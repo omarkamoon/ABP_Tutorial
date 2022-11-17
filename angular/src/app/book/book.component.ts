@@ -1,9 +1,11 @@
 import { ListService, PagedResultDto } from '@abp/ng.core';
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { BookDto, BookService, bookTypeOptions} from '@proxy/books';
+import { AuthorLookupDto, BookDto, BookService, bookTypeOptions} from '@proxy/books';
 import { NgbDateNativeAdapter, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book',
@@ -19,6 +21,8 @@ export class BookComponent implements OnInit {
   
   selectedBook = {} as BookDto; // declare selectedBook
 
+  authors$: Observable<AuthorLookupDto[]>;
+
   form: FormGroup; // add this line
 
   // add bookTypes as a list of BookType enum members
@@ -27,7 +31,10 @@ export class BookComponent implements OnInit {
   constructor(public readonly list: ListService, 
               private bookService: BookService, 
               private fb: FormBuilder, 
-              private confirmation: ConfirmationService) {}
+              private confirmation: ConfirmationService) {
+
+                this.authors$ = bookService.getAuthorLookup().pipe(map((r) => r.items));
+              }
 
   isModalOpen = false; // add this line
 
@@ -67,10 +74,11 @@ export class BookComponent implements OnInit {
   // add buildForm method
   buildForm() {
     this.form = this.fb.group({
-      name: [this.selectedBook.name??'', Validators.required],
-      type: [this.selectedBook.type?? null, Validators.required],
-      publishDate: [this.selectedBook.publishDate?? null, Validators.required],
-      price: [this.selectedBook.price?? null, Validators.required],
+      authorId: [this.selectedBook.authorId || null, Validators.required],
+      name: [this.selectedBook.name || null, Validators.required],
+      type: [this.selectedBook.type || null, Validators.required],
+      publishDate: [this.selectedBook.publishDate ? new Date(this.selectedBook.publishDate) : null, Validators.required],
+      price: [this.selectedBook.price || null, Validators.required],
     });
   }
 

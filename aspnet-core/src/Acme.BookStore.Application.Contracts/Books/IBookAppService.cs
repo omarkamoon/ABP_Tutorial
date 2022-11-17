@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
@@ -10,5 +11,7 @@ namespace Acme.BookStore.Books
             PagedAndSortedResultRequestDto, //Used for paging/sorting
             CreateUpdateBookDto> //Used to create/update a book
     {
+        // ADD the NEW METHOD
+        Task<ListResultDto<AuthorLookupDto>> GetAuthorLookupAsync();
     }
 }
