@@ -69,7 +69,7 @@ export class BookComponent implements OnInit {
     this.form = this.fb.group({
       name: [this.selectedBook.name??'', Validators.required],
       type: [this.selectedBook.type?? null, Validators.required],
-      publishDate: [this.selectedBook.publishDate?? null, Validators.required],
+      publishDate: [this.selectedBook.publishDate ? new Date(this.selectedBook.publishDate) : null, Validators.required],
       price: [this.selectedBook.price?? null, Validators.required],
     });
   }

@@ -8,12 +8,12 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
 {
     public override void Define(IPermissionDefinitionContext context)
     {
-        var bookStoreGroup = context.AddGroup(BookStorePermissions.GroupName, L("Permission:BookStore"));
-        //Define your own permissions here.
-        var booksPermission = bookStoreGroup.AddPermission(BookStorePermissions.Books.Default, L("Permission:Books"));
-        booksPermission.AddChild(BookStorePermissions.Books.Create, L("Permission:Books.Create"));
-        booksPermission.AddChild(BookStorePermissions.Books.Edit, L("Permission:Books.Edit"));
-        booksPermission.AddChild(BookStorePermissions.Books.Delete, L("Permission:Books.Delete"));
+        // var bookStoreGroup = context.AddGroup(BookStorePermissions.GroupName, L("Permission:BookStore"));
+        // Define your own permissions here.
+        // var booksPermission = bookStoreGroup.AddPermission(BookStorePermissions.Books.Default, L("Permission:Books"));
+        // booksPermission.AddChild(BookStorePermissions.Books.Create, L("Permission:Books.Create"));
+        // booksPermission.AddChild(BookStorePermissions.Books.Edit, L("Permission:Books.Edit"));
+        // booksPermission.AddChild(BookStorePermissions.Books.Delete, L("Permission:Books.Delete"));
     }
 
     private static LocalizableString L(string name)
