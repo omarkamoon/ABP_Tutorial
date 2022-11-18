@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Acme.BookStore.Authers;
 using Acme.BookStore.Permissions;
 using Microsoft.AspNetCore.Authorization;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.ObjectMapping;
@@ -28,6 +29,10 @@ namespace Acme.BookStore.Authors
         //[Authorize(BookStorePermissions.Authors.Create)]
         public async Task<AuthorDto> CreateAsync(CreateAuthorDto input)
         {
+            int res = DateTime.Compare(input.BirthDate, DateTime.Today);
+
+            if (res > 0) throw new BirthayMustBeBeforeNowException();
+
             var author = await _authorManager.CreateAsync(
                 input.Name,
                 input.BirthDate,
@@ -89,6 +94,10 @@ namespace Acme.BookStore.Authors
             {
                 await _authorManager.ChangeNameAsync(author, input.Name);
             }
+
+            int res = DateTime.Compare(input.BirthDate, DateTime.Today);
+
+            if (res > 0) throw new BirthayMustBeBeforeNowException();
 
             author.BirthDate = input.BirthDate;
             author.ShortBio = input.ShortBio;
