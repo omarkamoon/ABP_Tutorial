@@ -6,7 +6,7 @@ namespace Acme.BookStore.Authors
     public class CreateAuthorDto
     {
         [Required]
-        [StringLength(AuthorConsts.MaxNameLength)]
+        [StringLength(4)]
         public string Name { get; set; }
 
         [Required]

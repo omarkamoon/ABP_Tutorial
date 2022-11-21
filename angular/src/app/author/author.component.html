@@ -17,6 +17,7 @@
       </div>
     </div>
     <div class="card-body">
+      <input class="form-control" type="text" name="search" (input)="search()" [(ngModel)]="searchText" placeholder="&#61442;  Start searching for an author">
       <ngx-datatable [rows]="author.items" [count]="author.totalCount" [list]="list" default>
         <ngx-datatable-column
           [name]="'::Actions' | abpLocalization"

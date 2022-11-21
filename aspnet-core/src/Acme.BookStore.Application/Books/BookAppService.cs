@@ -42,8 +42,6 @@ namespace Acme.BookStore.Books
 
         public override async Task<BookDto> GetAsync(Guid id)
         {
-            try
-            {
                 //Get the IQueryable<Book> from the repository
                 var queryable = await Repository.GetQueryableAsync();
 
@@ -63,13 +61,6 @@ namespace Acme.BookStore.Books
                 var bookDto = ObjectMapper.Map<Book, BookDto>(queryResult.book);
                 bookDto.AuthorName = queryResult.author.Name;
                 return bookDto;
-            }
-            
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
         }
 
         public override async Task<PagedResultDto<BookDto>> GetListAsync(PagedAndSortedResultRequestDto input)

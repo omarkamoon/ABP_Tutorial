@@ -95,6 +95,7 @@ namespace Acme.BookStore.Authors
                 await _authorManager.ChangeNameAsync(author, input.Name);
             }
 
+            throw new UserFriendlyException("Username should be unique!");
             int res = DateTime.Compare(input.BirthDate, DateTime.Today);
 
             if (res > 0) throw new BirthayMustBeBeforeNowException();

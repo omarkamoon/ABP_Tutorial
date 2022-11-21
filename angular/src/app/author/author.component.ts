@@ -4,6 +4,7 @@ import { AuthorService, AuthorDto } from '@proxy/authors';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbDateNativeAdapter, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-author',
@@ -17,6 +18,8 @@ export class AuthorComponent implements OnInit {
   isModalOpen = false;
 
   form: FormGroup;
+  
+  searchText='';
 
   selectedAuthor = {} as AuthorDto;
 
@@ -27,8 +30,18 @@ export class AuthorComponent implements OnInit {
     private confirmation: ConfirmationService
   ) {}
 
+
+  search(){
+    const authorStreamCreator = (query) => this.authorService.getList({...query, filter: this.searchText});
+
+    this.list.hookToQuery(authorStreamCreator).subscribe((response) => {
+      this.author = response;
+    });
+  }
+
   ngOnInit(): void {
-    const authorStreamCreator = (query) => this.authorService.getList(query);
+    
+    const authorStreamCreator = (query) => this.authorService.getList({...query, filter: this.searchText});
 
     this.list.hookToQuery(authorStreamCreator).subscribe((response) => {
       this.author = response;
