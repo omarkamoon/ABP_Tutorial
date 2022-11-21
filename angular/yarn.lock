@@ -2186,6 +2186,26 @@
     "@typescript-eslint/types" "5.43.0"
     eslint-visitor-keys "^3.3.0"
 
+"@volo/abp.commercial.ng.ui@~6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@volo/abp.commercial.ng.ui/-/abp.commercial.ng.ui-6.0.1.tgz#ed91796836f140a875e3e8d5c3cbc0a0d3557983"
+  integrity sha512-MTF+v/uBdVXw2ctY15CFvRE2aZyyND1fxtEQZbllcLQRFldcc1uygz3JPYFjQxj3rL3VmVuYuSYzGqHzoHziIg==
+  dependencies:
+    "@abp/ng.theme.shared" "~6.0.1"
+    tslib "^2.0.0"
+
+"@volo/abp.ng.account@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@volo/abp.ng.account/-/abp.ng.account-6.0.1.tgz#12fcdf10d1d834d1ec1ab9ec38c09d535f3f2fa5"
+  integrity sha512-0E5aKsz4389I2Sn67k6GXoLO03/Ui5qMPDb12CLnT9B7vEpJRflSwAr6PWbeMczwcq3hgkOTKaxE5mQnBEdOXA==
+  dependencies:
+    "@abp/ng.components" "~6.0.1"
+    "@abp/ng.setting-management" "~6.0.1"
+    "@abp/ng.theme.shared" "~6.0.1"
+    "@volo/abp.commercial.ng.ui" "~6.0.1"
+    cropperjs "^1.5.12"
+    tslib "^2.0.0"
+
 "@volo/abp.ng.lepton-x.core@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@volo/abp.ng.lepton-x.core/-/abp.ng.lepton-x.core-1.0.0.tgz#75c30c13d0ed09e2e57352227e96a3d622266c9e"
@@ -3168,6 +3188,11 @@ critters@0.0.16:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     postcss "^8.3.7"
     pretty-bytes "^5.3.0"
+
+cropperjs@^1.5.12:
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.13.tgz#eb1682f01d17c70ed5244317091d745c9a249ef8"
+  integrity sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==
 
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"

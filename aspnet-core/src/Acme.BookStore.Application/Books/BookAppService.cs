@@ -91,8 +91,8 @@ namespace Acme.BookStore.Books
             }).ToList();
 
             //Get the total count with another query
-            var totalCount = await Repository.GetCountAsync();
-
+            var totalCount = bookDtos.Count;
+            
             return new PagedResultDto<BookDto>(
                 totalCount,
                 bookDtos

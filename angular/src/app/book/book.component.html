@@ -37,6 +37,10 @@
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column
+          [name]="'::Author' | abpLocalization"
+          prop="authorName"
+        ></ngx-datatable-column>
+        <ngx-datatable-column
         [name]="'::Actions' | abpLocalization"
         [maxWidth]="150"
         [sortable]="false">
@@ -60,11 +64,6 @@
             </div>
         </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column
-          [name]="'::Author' | abpLocalization"
-          prop="authorName"
-          [sortable]="false"
-        ></ngx-datatable-column>
             </ngx-datatable>
             </div>
         </div>
