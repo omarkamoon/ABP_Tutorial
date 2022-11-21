@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Acme.BookStore.Authors
@@ -6,7 +7,7 @@ namespace Acme.BookStore.Authors
     public class CreateAuthorDto
     {
         [Required]
-        [StringLength(4)]
+        [StringLength(AuthorConsts.MaxNameLength)]
         public string Name { get; set; }
 
         [Required]

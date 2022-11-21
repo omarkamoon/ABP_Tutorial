@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Volo.Abp;
 
 namespace Acme.BookStore.Books
 {
-    public class CreateUpdateBookDto
+    public class CreateUpdateBookDto: IValidatableObject
     {
 
         public Guid AuthorId { get; set; }
@@ -21,5 +23,10 @@ namespace Acme.BookStore.Books
 
         [Required]
         public float Price { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Price <= 0) yield return new ValidationResult("Price should be positive");
+        }
     }
 }

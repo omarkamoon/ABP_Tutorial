@@ -95,9 +95,7 @@ namespace Acme.BookStore.Authors
                 await _authorManager.ChangeNameAsync(author, input.Name);
             }
 
-            int res = DateTime.Compare(input.BirthDate, DateTime.Today);
-
-            if (res > 0) throw new BirthayMustBeBeforeNowException();
+            if (input.BirthDate > Clock.Now) throw new BirthayMustBeBeforeNowException();
 
             author.BirthDate = input.BirthDate;
             author.ShortBio = input.ShortBio;
